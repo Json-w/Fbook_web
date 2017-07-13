@@ -1,0 +1,27 @@
+.searchBar {
+  display: flex;
+  height: 30px;
+  width: 350px;
+  background-color: white;
+  input {
+    font-size: small;
+    height: 30px;
+    width: 350px;
+    border-radius: 1em;
+    border: 1px;
+  }
+  .searchBar-Icon{
+    display: inline-block;
+    background-color: gray;
+    height: 30px;
+    width: 30px;
+    position: relative;
+    img{
+      height: 20px;
+      position: absolute;
+      width: 20px;
+      left: 5px;
+      top: 5px;
+    }
+  }
+}
