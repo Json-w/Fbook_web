@@ -1,10 +1,27 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import { Header } from '../../components/Header'
 
-export default class Home extends Component {
+class Home extends Component {
 
   render() {
-    return <Header/>
+    const {onSearch, searchKeyWords}=this.props;
+    return <Header onSearch={onSearch} searchKeyWords={searchKeyWords}/>
   }
-
 }
+
+const mapDispatchToProps = {
+  onSearch: (keyWords)=>({
+    type: 'SEARCH_BOOKS',
+    payload: keyWords,
+  })
+}
+
+const mapStateToProps = (state)=> {
+  console.log(state)
+  return {
+    searchKeyWords: state.search.searchKeyWords,
+  }
+}
+
+export default Home = connect(mapStateToProps, mapDispatchToProps)(Home);
