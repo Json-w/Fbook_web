@@ -1,5 +1,6 @@
 import React from 'react';
 import { SearchBar } from '../SearchBar'
+import Button from '../Button'
 import './index.css'
 
 export const Header = ({onSearch, searchKeyWords = ''})=> {
@@ -11,6 +12,10 @@ export const Header = ({onSearch, searchKeyWords = ''})=> {
         <SearchBar
           onHandleSearch={onSearch}
           searchKeyWords={searchKeyWords}/>
+        <div className="Header-btn-group">
+          <Button text="登录"/>
+          <Button text="注册"/>
+        </div>
       </div>
     </div>);
 }

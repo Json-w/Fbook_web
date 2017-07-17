@@ -1,22 +1,26 @@
 .searchBar {
   display: flex;
   height: 30px;
-  width: 350px;
+  width: 400px;
   background-color: white;
   input {
     font-size: small;
     height: 30px;
-    width: 350px;
+    width: 400px;
     border-radius: 1em;
     border: 1px;
+    text-indent: 12px;
+    &:focus {
+      outline: none;
+    }
   }
-  .searchBar-Icon{
+  .searchBar-Icon {
     display: inline-block;
     background-color: gray;
     height: 30px;
     width: 30px;
     position: relative;
-    img{
+    img {
       height: 20px;
       position: absolute;
       width: 20px;

@@ -1,12 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Header } from '../../components/Header'
+import BookCard from '../../components/BookCard'
 
 class Home extends Component {
 
   render() {
     const {onSearch, searchKeyWords}=this.props;
-    return <Header onSearch={onSearch} searchKeyWords={searchKeyWords}/>
+    return (
+      <div>
+        <Header onSearch={onSearch} searchKeyWords={searchKeyWords}/>
+        <BookCard
+          imgUrl="https://img1.doubanio.com/lpic/s29493608.jpg"
+          imgAlt="十六夜膳房"
+          title="十六夜膳房"
+          author="毛無"
+        />
+      </div>)
   }
 }
 

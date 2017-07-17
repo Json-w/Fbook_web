@@ -10,5 +10,14 @@
   height: 100%;
   width: 70%;
   margin: auto;
+  position: relative;
+  .Header-title {
+    margin-right: 80px;
+  }
+}
+
+.Header-btn-group {
+  position: absolute;
+  right: 0;
 }
 
