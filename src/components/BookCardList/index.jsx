@@ -9,7 +9,7 @@ const BookCardList = ({bookCards})=> {
       {bookCards.map((bookCard, i)=> {
         return <BookCard
           key={i}
-          imgUrl={bookCard.imgUrl}
+          imgUrl={bookCard.imageUrl}
           imgAlt={bookCard.imgAlt}
           title={bookCard.title}
           author={bookCard.author}

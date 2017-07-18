@@ -1,91 +1,21 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import { Header } from '../../components/Header'
-import BookCard from '../../components/BookCard'
-import BookCardList from '../../components/BookCardList'
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Header } from "../../components/Header";
+import BookCardList from "../../components/BookCardList";
+import { fetchBooks } from "../../actions/BookActions";
 
 class Home extends Component {
-  render() {
-    const bookcardList = [
-      {
-        imgUrl: "https://img1.doubanio.com/lpic/s29493608.jpg",
-        imgAlt: "十六夜膳房",
-        title: "十六夜膳房",
-        author: "毛無",
-      },
-      {
-        imgUrl: "https://img1.doubanio.com/lpic/s29493608.jpg",
-        imgAlt: "十六夜膳房",
-        title: "十六夜膳房",
-        author: "毛無",
-      },
-      {
-        imgUrl: "https://img1.doubanio.com/lpic/s29493608.jpg",
-        imgAlt: "十六夜膳房",
-        title: "十六夜膳房",
-        author: "毛無",
-      },
-      {
-        imgUrl: "https://img1.doubanio.com/lpic/s29493608.jpg",
-        imgAlt: "十六夜膳房",
-        title: "十六夜膳房",
-        author: "毛無",
-      },
-      {
-        imgUrl: "https://img1.doubanio.com/lpic/s29493608.jpg",
-        imgAlt: "十六夜膳房",
-        title: "十六夜膳房",
-        author: "毛無",
-      },
-      {
-        imgUrl: "https://img1.doubanio.com/lpic/s29493608.jpg",
-        imgAlt: "十六夜膳房",
-        title: "十六夜膳房",
-        author: "毛無",
-      },
-      {
-        imgUrl: "https://img1.doubanio.com/lpic/s29493608.jpg",
-        imgAlt: "十六夜膳房",
-        title: "十六夜膳房",
-        author: "毛無",
-      },
-      {
-        imgUrl: "https://img1.doubanio.com/lpic/s29493608.jpg",
-        imgAlt: "十六夜膳房",
-        title: "十六夜膳房",
-        author: "毛無",
-      },
-      {
-        imgUrl: "https://img1.doubanio.com/lpic/s29493608.jpg",
-        imgAlt: "十六夜膳房",
-        title: "十六夜膳房",
-        author: "毛無",
-      },
-      {
-        imgUrl: "https://img1.doubanio.com/lpic/s29493608.jpg",
-        imgAlt: "十六夜膳房",
-        title: "十六夜膳房",
-        author: "毛無",
-      },
-      {
-        imgUrl: "https://img1.doubanio.com/lpic/s29493608.jpg",
-        imgAlt: "十六夜膳房",
-        title: "十六夜膳房",
-        author: "毛無",
-      },
-      {
-        imgUrl: "https://img1.doubanio.com/lpic/s29493608.jpg",
-        imgAlt: "十六夜膳房",
-        title: "十六夜膳房",
-        author: "毛無",
-      },
 
-    ]
-    const {onSearch, searchKeyWords}=this.props;
+  componentWillMount() {
+    this.props.fetchBooks(0, 18);
+  }
+
+  render() {
+    const {onSearch, searchKeyWords, bookCardList}=this.props;
     return (
       <div>
         <Header onSearch={onSearch} searchKeyWords={searchKeyWords}/>
-        <BookCardList bookCards={bookcardList}/>
+        <BookCardList bookCards={bookCardList}/>
       </div>)
   }
 }
@@ -94,13 +24,17 @@ const mapDispatchToProps = {
   onSearch: (keyWords)=>({
     type: 'SEARCH_BOOKS',
     payload: keyWords,
-  })
+  }),
+  fetchBooks: (offset, limit)=> {
+    return fetchBooks(offset, limit)
+  },
 }
 
 const mapStateToProps = (state)=> {
-  console.log(state)
+  console.log('home' + state)
   return {
     searchKeyWords: state.search.searchKeyWords,
+    bookCardList: state.books,
   }
 }
 
