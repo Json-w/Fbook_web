@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Header } from "../../components/Header";
 import BookCardList from "../../components/BookCardList";
 import { fetchBooks } from "../../actions/BookActions";
+import Pagination from '../../components/Pagination'
 
 class Home extends Component {
 
@@ -16,6 +17,7 @@ class Home extends Component {
       <div>
         <Header onSearch={onSearch} searchKeyWords={searchKeyWords}/>
         <BookCardList bookCards={bookCardList}/>
+        <Pagination total={100}/>
       </div>)
   }
 }
