@@ -1,7 +1,7 @@
-export const booksReducer = (state = [], action)=> {
+export const booksReducer = (state = {data: []}, action)=> {
   switch (action.type) {
     case "UPDATE_BOOKS_ON_STATE":
-      return action.payload.data;
+      return action.payload;
     default:
       return state;
   }

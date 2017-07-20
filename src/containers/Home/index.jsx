@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Header } from "../../components/Header";
 import BookCardList from "../../components/BookCardList";
-import { fetchBooks } from "../../actions/BookActions";
+import { fetchBooks, fetchBooksByPage } from "../../actions/BookActions";
 import Pagination from '../../components/Pagination'
 
 class Home extends Component {
@@ -12,12 +12,15 @@ class Home extends Component {
   }
 
   render() {
-    const {onSearch, searchKeyWords, bookCardList}=this.props;
+    const {onSearch, searchKeyWords, bookCardList, onPageChange, totalCount, currentPage}=this.props;
     return (
       <div>
         <Header onSearch={onSearch} searchKeyWords={searchKeyWords}/>
         <BookCardList bookCards={bookCardList}/>
-        <Pagination total={100}/>
+        <Pagination total={totalCount}
+                    onChange={onPageChange}
+                    pageItems={18}
+                    currentPage={currentPage}/>
       </div>)
   }
 }
@@ -30,13 +33,18 @@ const mapDispatchToProps = {
   fetchBooks: (offset, limit)=> {
     return fetchBooks(offset, limit)
   },
+  onPageChange: (page, pageSize)=> {
+    return fetchBooksByPage(page, pageSize);
+  }
 }
 
 const mapStateToProps = (state)=> {
   console.log('home' + state)
   return {
     searchKeyWords: state.search.searchKeyWords,
-    bookCardList: state.books,
+    bookCardList: state.books.data,
+    totalCount: state.books.totalCount,
+    currentPage: state.books.currentPage,
   }
 }
 
