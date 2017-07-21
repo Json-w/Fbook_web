@@ -6,7 +6,6 @@ import { fetchBooks, fetchBooksByPage } from "../../actions/BookActions";
 import Pagination from '../../components/Pagination'
 
 class Home extends Component {
-
   componentWillMount() {
     this.props.fetchBooks(0, 18);
   }
@@ -26,12 +25,11 @@ class Home extends Component {
 }
 
 const mapDispatchToProps = {
-  onSearch: (keyWords)=>({
-    type: 'SEARCH_BOOKS',
-    payload: keyWords,
-  }),
+  onSearch: (keyWords)=> {
+    return fetchBooksByPage(1, 18, keyWords);
+  },
   fetchBooks: (offset, limit)=> {
-    return fetchBooks(offset, limit)
+    return fetchBooks(offset, limit);
   },
   onPageChange: (page, pageSize)=> {
     return fetchBooksByPage(page, pageSize);
