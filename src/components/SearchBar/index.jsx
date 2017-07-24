@@ -11,9 +11,8 @@ export class SearchBar extends Component {
 
   handleSearch = (keyWords)=> {
     const {onHandleSearch}=this.props;
-    if (keyWords !== '') {
-      onHandleSearch(keyWords);
-    }
+    onHandleSearch(keyWords);
+
   }
 
   render() {
