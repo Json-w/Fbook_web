@@ -1,6 +1,7 @@
 import React from 'react';
 import { SearchBar } from '../SearchBar'
 import Button from '../Button'
+import Link from '../Link'
 import './index.css'
 
 export const Header = ({onSearch, searchKeyWords = ''})=> {
@@ -13,8 +14,8 @@ export const Header = ({onSearch, searchKeyWords = ''})=> {
           onHandleSearch={onSearch}
           searchKeyWords={searchKeyWords}/>
         <div className="Header-btn-group">
-          <Button text="登录"/>
-          <Button text="注册"/>
+          <Link text="登录" path="/login"/>
+          <Link text="注册" path="/register"/>
         </div>
       </div>
     </div>);
